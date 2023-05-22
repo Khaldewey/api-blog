@@ -1,11 +1,14 @@
 package com.israelita.isblog.isblog.controllers;
 
 import com.israelita.isblog.isblog.dto.PostagensDTO;
+import com.israelita.isblog.isblog.entities.Postagens;
 import com.israelita.isblog.isblog.services.PostagensService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +23,16 @@ public class PostagensController {
     public List<PostagensDTO> findAll(){
         List<PostagensDTO> result = postagensService.findAll();
         return result;
+    }
+
+    @PostMapping
+    @RequestMapping(value="/post")
+    public ResponseEntity<Object> salvarPostagem(@RequestBody PostagensDTO postagemDTO){
+
+        var postagem = new Postagens();
+        BeanUtils.copyProperties(postagemDTO, postagem);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(postagensService.save(postagem));
     }
 
 }

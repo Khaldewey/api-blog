@@ -10,8 +10,12 @@ public class Postagens {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(columnDefinition = "TEXT" )
     private String titulo;
+    @Column(columnDefinition = "TEXT" )
     private String foto;
+    @Column(columnDefinition = "TEXT" )
     private String descricao;
 
     public Postagens(){

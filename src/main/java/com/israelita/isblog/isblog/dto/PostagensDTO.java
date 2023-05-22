@@ -14,6 +14,10 @@ public class PostagensDTO {
         BeanUtils.copyProperties(entity,this);
     }
 
+    public PostagensDTO(){
+
+    }
+
     public Long getId() {
         return id;
     }

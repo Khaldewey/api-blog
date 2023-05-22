@@ -22,4 +22,9 @@ public class PostagensService {
       return dto;
 
    }
+
+    @Transactional
+    public Postagens save(Postagens postagem) {
+        return postagensRepository.save(postagem);
+    }
 }
