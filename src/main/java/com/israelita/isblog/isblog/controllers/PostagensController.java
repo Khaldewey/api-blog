@@ -23,6 +23,15 @@ public class PostagensController {
     public List<PostagensDTO> findAll(){
         List<PostagensDTO> result = postagensService.findAll();
         return result;
+    } 
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getPostagem(@PathVariable(value = "id") Long id){
+        Optional<Postagens> postagensOptional = postagensService.findById(id);
+        if (!postagensOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Postagem não encontrada");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(postagensOptional.get());
     }
 
     @PostMapping

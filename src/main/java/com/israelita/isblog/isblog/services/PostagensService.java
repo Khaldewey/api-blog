@@ -21,7 +21,11 @@ public class PostagensService {
       List<PostagensDTO> dto = result.stream().map(x -> new PostagensDTO(x)).toList();
       return dto;
 
-   }
+   } 
+
+   public Optional<Postagens> findById(Long id) {
+        return postagensRepository.findById(id);
+    }
 
     @Transactional
     public Postagens save(Postagens postagem) {
