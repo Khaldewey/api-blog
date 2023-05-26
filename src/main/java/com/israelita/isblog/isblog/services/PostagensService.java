@@ -5,7 +5,8 @@ import com.israelita.isblog.isblog.entities.Postagens;
 import com.israelita.isblog.isblog.repositories.PostagensRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Transactional; 
+import java.util.Optional;
 
 import java.util.List;
 
