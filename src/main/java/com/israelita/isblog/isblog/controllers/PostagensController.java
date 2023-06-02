@@ -43,6 +43,17 @@ public class PostagensController {
         BeanUtils.copyProperties(postagemDTO, postagem);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(postagensService.save(postagem));
+    } 
+
+     @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletePostagem(@PathVariable(value = "id") Long id){
+        Optional<Postagens> postagensOptional = postagensService.findById(id);
+        if (!postagensOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Postagem não encontrada");
+        }
+        postagensService.delete(postagensOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Postagem excluída");
+
     }
 
 }

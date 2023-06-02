@@ -31,5 +31,10 @@ public class PostagensService {
     @Transactional
     public Postagens save(Postagens postagem) {
         return postagensRepository.save(postagem);
+    } 
+
+    @Transactional
+    public void delete(Postagens postagem){ 
+        postagensRepository.delete(postagem); 
     }
 }
