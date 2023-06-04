@@ -52,7 +52,7 @@ public class PostagensController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Postagem não encontrada");
         }
         postagensService.delete(postagensOptional.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Postagem excluída");
+        return ResponseEntity.status(HttpStatus.OK).body("{\"message\": \"Postagem excluída\"}");
 
     }
 
